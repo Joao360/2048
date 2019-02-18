@@ -1,4 +1,7 @@
-from random import randint, choice
+import curses
+from curses import KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_UP
+from random import choice, randint
+
 from view.board import Board
 
 class Position:
@@ -26,7 +29,6 @@ class Game:
         self.freePositions = self.getFreePositions()
         self.insert_random_number_in_board()
         self.insert_random_number_in_board()
-        self.view = Board(self.board)
         #print (self.board)
 
     def insert_random_number_in_board(self):
@@ -44,7 +46,15 @@ class Game:
         return positions
 
     def run(self):
-        self.view.draw_board()
+        view = Board(self.board)
+        view.draw_board()
+
+        while True:
+            key = view.window.getch()
+            if key == ord('q'):
+                break
+
+        curses.endwin()
 
 
 if __name__ == '__main__':
