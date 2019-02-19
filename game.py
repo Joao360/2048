@@ -93,8 +93,6 @@ class Game:
                         columns.reverse()
                     self.board = self.transposeBoard()
 
-
-
                 #TODO Optimize this
                 self.freePositions = self.getFreePositions()
                 self.insert_random_number_in_board()
@@ -103,15 +101,5 @@ class Game:
         curses.endwin()
 
 
-if __name__ == '__main__':
-    """ a = [2, 2, 4, 4]
-    Game.moveLeft(a)
-    a.reverse()
-    print(a) """
-    
-    """ matrix = [[1, 2, 3],[4, 5, 6], [7, 8, 9]]
-    print(matrix)
-    matrix = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
-    print(matrix) """
-    
+if __name__ == '__main__':   
     Game(4).run()
